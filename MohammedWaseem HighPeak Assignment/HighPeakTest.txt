@@ -1,0 +1,50 @@
+package HighPeakTest;
+
+import java.util.Scanner;
+
+public class HighPeak
+{
+
+		public static void main(String[] args) 
+		{
+			Scanner sc = new Scanner(System.in);
+			int size = sc.nextInt();
+			int[][] a = new int[size][3];
+			for(int j=0;j<a.length;j++)
+			{
+				for(int k=0;k<a[0].length;k++)
+				{
+					a[j][k] = sc.nextInt();
+				}
+			}
+			
+			int result[] = profit(a);
+			
+			for(int j: result)
+			{
+				System.out.println(j);
+			}
+			
+
+		}
+		
+		public static int[] profit(int[][] a)
+		{
+			int maxx = a[0][2];
+			int plus = 0;
+			for(int j=0;j<a.length;j++)
+			{
+				plus+=a[j][2];
+				if(maxx<a[j][2])
+				maxx = a[j][2];
+				
+			}
+			
+			int[] result = new int[2];
+			result[0] = a.length-1;
+			result[1] = plus-maxx;
+			
+			return result;
+			
+		}
+}
